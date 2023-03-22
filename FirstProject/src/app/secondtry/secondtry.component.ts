@@ -7,4 +7,23 @@ import { Component } from '@angular/core';
 })
 export class SecondtryComponent {
 
+  private name = "sametcan";
+
+  itemss = [
+    "samet",
+    "mehmet",
+    "ahmet",
+    "cevdet"
+  ];
+
+  items = [
+    { id: 1, ders: "fizik", durum: "tamam"},
+    { id: 2, ders: "kimya", durum: "tamam"},
+    { id: 3, ders: "mat", durum: "eksik"}
+  ];
+
+  getName(){
+    return this.name;
+  }
+
 }

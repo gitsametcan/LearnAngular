@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-5 mx-auto">
             <h3 class="bg-primary text-white p-3">
-                Sametin Listesi
+                {{getName()}}'in Listesi
             </h3>
 
             <div class="input-group mb-3">
@@ -25,23 +25,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Kahvalti</td>
-                        <td>Yes</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Kahv</td>
-                        <td>Yes</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Alti</td>
-                        <td>No</td>
+                    <tr *ngFor="let item of items; let i = index;">
+                        <td>{{i+1}}</td>
+                        <td>{{item.ders}}</td>
+                        <td>{{item.durum}}</td>
                     </tr>
                 </tbody>
             </table>
+
+            <ul>
+                <li *ngFor="let item of items">
+                    {{item.ders}}
+
+                </li>
+            </ul>
         </div>
     </div>
 </div>
