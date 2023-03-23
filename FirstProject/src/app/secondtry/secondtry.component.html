@@ -7,8 +7,10 @@
 
             <div class="input-group mb-3">
 
-                <input type="text" class="form-control">
-                <button class="btn btn-outline-primary">ekle</button>
+                <input #girdi type="text" class="form-control" 
+                (keyup.enter)="itemEkle(girdi); girdi.value=''"
+                >
+                <button class="btn btn-outline-primary" (click)="itemEkle(girdi); girdi.value=''">ekle</button>
             </div>
 
             <div class="form-check mb-3">
@@ -25,7 +27,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let item of items; let i = index;">
+                    <tr *ngFor="let item of getItems(); let i = index;">
                         <td>{{i+1}}</td>
                         <td>{{item.ders}}</td>
                         <td>{{item.durum}}</td>
@@ -33,12 +35,7 @@
                 </tbody>
             </table>
 
-            <ul>
-                <li *ngFor="let item of items">
-                    {{item.ders}}
-
-                </li>
-            </ul>
+            
         </div>
     </div>
 </div>
