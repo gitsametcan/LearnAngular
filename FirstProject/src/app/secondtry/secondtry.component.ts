@@ -9,7 +9,8 @@ import { SecondItem } from '../seconditem';
 })
 export class SecondtryComponent {
 
-  // private name = "sametcan";
+  hepsiniGoster: boolean = true;
+  // private name = "sametscan";
 
   // itemss = [
   //   "samet",
@@ -34,7 +35,10 @@ export class SecondtryComponent {
   }
 
   getItems(){
-    return this.si.firstItem;
+    if(this.hepsiniGoster){
+      return this.si.firstItem;
+    }
+    return this.si.firstItem.filter(firstItem => firstItem.durum =="tamam" );
   }
 
   itemEkle(girdi: any){
