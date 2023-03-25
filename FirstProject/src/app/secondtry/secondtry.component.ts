@@ -9,7 +9,7 @@ import { SecondItem } from '../seconditem';
 })
 export class SecondtryComponent {
 
-  hepsiniGoster: boolean = true;
+  hepsiniGoster: boolean = false;
   // private name = "sametscan";
 
   // itemss = [
