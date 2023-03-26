@@ -38,12 +38,12 @@ export class SecondtryComponent {
     if(this.hepsiniGoster){
       return this.si.firstItem;
     }
-    return this.si.firstItem.filter(firstItem => firstItem.durum =="tamam" );
+    return this.si.firstItem.filter(firstItem => firstItem.durum ==false  );
   }
 
   itemEkle(girdi: any){
     if(girdi.value!=""){
-      this.si.firstItem.push({id: 4, ders: girdi.value, durum: "eksik"});
+      this.si.firstItem.push({id: 4, ders: girdi.value, durum: false});
     }
     else{
       alert("bilgi gir");

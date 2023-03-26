@@ -16,7 +16,7 @@
 export interface FirstItem{
     id: number,
     ders: string,
-    durum: string
+    durum: boolean
 }
 
 
