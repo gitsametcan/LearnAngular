@@ -51,4 +51,8 @@ export class SecondtryComponent {
     
   }
 
+  elemanSayisi(){
+    return this.si.firstItem.filter(i=>i.durum).length;
+  }
+
 }

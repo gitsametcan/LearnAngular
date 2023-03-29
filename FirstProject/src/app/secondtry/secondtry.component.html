@@ -18,7 +18,16 @@
                 <label for="hepsinigoster" class="form-check-label">hepsini göster</label>
             </div>
 
-            <table class="table table-bordered" *ngIf="getItems().length>0">
+            <div class="my-2">
+                {{elemanSayisi()}} tane tamamdir
+            </div>
+            <div class="alert alert-warning" *ngIf="getItems().length == 0 else ilktemplate">
+                boş lisete
+            </div>
+
+            <ng-template #ilktemplate>
+
+                <table class="table table-bordered" *ngIf="getItems().length>0">
                 <thead>
                     <tr>
                         <th></th>
@@ -34,6 +43,26 @@
                             <!-- <div *ngIf="item.durum">Tamam</div>
                             <div *ngIf="!item.durum">Eksik</div> -->
 
+                            <!-- <div *ngIf="item.durum; else bilmiomneola">
+                                Yes
+                            </div>
+
+                            <ng-template #bilmiomneola>
+                                No
+                            </ng-template> -->
+
+
+
+                            <!-- <div *ngIf="item.durum; then bilmiomneola">
+                                bu olmaz
+                            </div>
+
+                            <ng-template #bilmiomneola>
+                                No
+                            </ng-template> -->
+
+
+                            
                             <div [ngSwitch]="item.durum">
                                 <div *ngSwitchCase="true">Tamam</div>
                                 <div *ngSwitchCase="false">Eksik</div>
@@ -45,14 +74,10 @@
                         </td>
                     </tr>
                 </tbody>
-            </table>
+                </table>
 
-        <div class="alert alert-warning" *ngIf="getItems().length == 0">
+            </ng-template>
 
-            boş lisete
-
-
-        </div>
 
             
         </div>
