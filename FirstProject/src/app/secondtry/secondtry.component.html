@@ -7,10 +7,18 @@
 
             <div class="input-group mb-3">
 
-                <input #girdi type="text" class="form-control" 
-                (keyup.enter)="itemEkle(girdi); girdi.value=''"
+                <input type="text" class="form-control"
+                [(ngModel)]="aramaYeri" 
+                (keyup.enter)="itemEkle();"
                 >
-                <button class="btn btn-outline-primary" (click)="itemEkle(girdi); girdi.value=''">ekle</button>
+                <button
+                [class]="{
+                    'disabled':aramaYeri.length==0,
+                    'btn-secondary':aramaYeri.length==0,
+                    'btn-primary':aramaYeri.length>0
+                }"
+                class="btn"
+                (click)="itemEkle();">ekle</button>
             </div>
 
             <div class="form-check mb-3">
@@ -36,7 +44,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let item of getItems(); let i = index;">
+                    <tr *ngFor="let item of getItems(); let i = index;" [class]="{ 'bg-primary':item.durum}" [class.bg-warning]="!item.durum">
                         <td>{{i+1}}</td>
                         <td>{{item.ders}}</td>
                         <td>
@@ -53,21 +61,24 @@
 
 
 
-                            <!-- <div *ngIf="item.durum; then bilmiomneola">
+                            <div *ngIf="item.durum; then bilmiomneola else buola">
                                 bu olmaz
                             </div>
 
                             <ng-template #bilmiomneola>
-                                No
-                            </ng-template> -->
+                                Tamamdır
+                            </ng-template>
+
+                            <ng-template #buola>
+                                Olmadı
+                            </ng-template>
 
 
                             
-                            <div [ngSwitch]="item.durum">
+                            <!-- <div [ngSwitch]="item.durum">
                                 <div *ngSwitchCase="true">Tamam</div>
                                 <div *ngSwitchCase="false">Eksik</div>
-                                <!-- <div *ngSwitchDefault>output2</div> -->
-                            </div>
+                            </div> -->
                         </td>
                         <td>
                             <input type="checkbox" [(ngModel)]="item.durum" name="" id="">

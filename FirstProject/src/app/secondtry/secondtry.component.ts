@@ -10,6 +10,7 @@ import { SecondItem } from '../seconditem';
 export class SecondtryComponent {
 
   hepsiniGoster: boolean = false;
+  aramaYeri: string = "";
   // private name = "sametscan";
 
   // itemss = [
@@ -41,9 +42,10 @@ export class SecondtryComponent {
     return this.si.firstItem.filter(firstItem => firstItem.durum ==false  );
   }
 
-  itemEkle(girdi: any){
-    if(girdi.value!=""){
-      this.si.firstItem.push({id: 4, ders: girdi.value, durum: false});
+  itemEkle(){
+    if(this.aramaYeri!=""){
+      this.si.firstItem.push({id: 4, ders: this.aramaYeri, durum: false});
+      this.aramaYeri="";
     }
     else{
       alert("bilgi gir");
