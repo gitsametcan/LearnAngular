@@ -81,7 +81,7 @@
                             </div> -->
                         </td>
                         <td>
-                            <input type="checkbox" [(ngModel)]="item.durum" name="" id="">
+                            <input type="checkbox" (change)="onActionChanged(item)" [(ngModel)]="item.durum" name="" id="">
                         </td>
                     </tr>
                 </tbody>

@@ -29,6 +29,9 @@ export class SecondtryComponent {
   //   // new FirstItem(3,"kimya","eksik")
   // ];
 
+  constructor(){
+    this.si.firstItem = this.itemleriLSgetir();
+  }
   si = new SecondItem();
   
   getName(){
@@ -44,13 +47,46 @@ export class SecondtryComponent {
 
   itemEkle(){
     if(this.aramaYeri!=""){
-      this.si.firstItem.push({id: 4, ders: this.aramaYeri, durum: false});
+      let data = {id: 4, ders: this.aramaYeri, durum: false};
+      this.si.firstItem.push(data);
+
+      let items = this.itemleriLSgetir();
+      items.push(data);
+      localStorage.setItem("firstItem",JSON.stringify(items));
       this.aramaYeri="";
     }
     else{
       alert("bilgi gir");
     }
     
+  }
+
+  itemleriLSgetir(){
+    let items: FirstItem[]= [];
+
+    let value = localStorage.getItem("firstItem");
+
+    if(value != null){
+      items = JSON.parse(value);
+
+    }
+
+    return items;
+  }
+
+  onActionChanged(item: FirstItem){
+    console.log(item);
+    let items = this.itemleriLSgetir();
+
+    localStorage.clear();
+
+    items.forEach(i =>{
+      if(i.ders == item.ders){
+        i.durum = item.durum;
+      }
+    });
+
+    localStorage.setItem("firstItem",JSON.stringify(items));
   }
 
   elemanSayisi(){
